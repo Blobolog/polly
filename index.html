@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Happy 16th Polly 💕</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,47 +19,71 @@ body {
   background: linear-gradient(180deg, #ffd6ea, #f3b9d5);
   display: flex;
   justify-content: center;
-  min-height: 100vh;
 }
 
+/* PHONE SCREEN */
 .page {
   width: 100%;
   max-width: 390px;
-  padding: 26px 22px 40px;
-  text-align: center;
-  position: relative;
+  min-height: 100dvh;
+  padding: 16px;
   display: none;
-  animation: pageIn 0.5s ease;
+  flex-direction: column;
+  position: relative;
+  animation: pageIn 0.45s ease;
 }
 
 .page.active {
-  display: block;
+  display: flex;
 }
 
 @keyframes pageIn {
-  from { opacity: 0; transform: scale(0.96); }
+  from { opacity: 0; transform: scale(0.97); }
   to { opacity: 1; transform: scale(1); }
 }
 
 .polka {
   background-image: radial-gradient(#f7a8c7 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
+  background-size: 26px 26px;
 }
 
+/* HEADERS */
 h1, h2 {
   color: #5a3d4e;
+  margin: 8px 0;
 }
 
+/* LAYOUT SECTIONS */
+.header {
+  text-align: center;
+  padding-top: 6px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* CARD */
 .card {
-  background: rgba(255,250,252,0.96);
+  width: 100%;
+  background: rgba(255,250,252,0.97);
   border-radius: 26px;
-  padding: 24px;
-  margin-top: 24px;
+  padding: 26px 22px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 1;
 }
 
+/* BUTTONS */
 button {
-  margin-top: 18px;
+  margin-top: 14px;
   padding: 15px;
   width: 100%;
   border: none;
@@ -76,36 +100,40 @@ button:active {
 
 .back-btn {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  background: rgba(255,255,255,0.9);
+  top: 14px;
+  left: 14px;
+  background: rgba(255,255,255,0.95);
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 8px 14px;
   font-weight: 600;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  z-index: 2;
 }
 
-/* DECOR IMAGES */
+/* FLOATING DECOR */
 .decor {
   position: absolute;
-  width: 48px;
-  opacity: 0.9;
   pointer-events: none;
+  opacity: 0.9;
   animation: floaty 6s ease-in-out infinite;
 }
 
-.decor.small { width: 32px; }
+.decor.small { width: 28px; }
+.decor.medium { width: 44px; }
 .decor.big { width: 64px; }
+
+.decor.slow { animation-duration: 9s; }
+.decor.fast { animation-duration: 4.5s; }
 
 @keyframes floaty {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-14px); }
   100% { transform: translateY(0); }
 }
 
-/* ENVELOPE */
+/* INTERACTIVES */
 .envelope {
-  font-size: 56px;
+  font-size: 58px;
   cursor: pointer;
   transition: transform 0.6s ease;
 }
@@ -113,7 +141,6 @@ button:active {
   transform: rotateX(180deg) scale(1.1);
 }
 
-/* GIFT */
 .gift {
   font-size: 64px;
   transition: transform 0.5s ease;
@@ -122,15 +149,15 @@ button:active {
   transform: scale(0) rotate(180deg);
 }
 
-/* HUB CIRCLES */
+/* HUB */
 .circle-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 36px;
+  gap: 10px;
 }
 
 .circle {
-  width: 96px;
+  flex: 1;
   height: 96px;
   background: #fffafc;
   border-radius: 50%;
@@ -139,7 +166,7 @@ button:active {
   justify-content: center;
   font-size: 2rem;
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.45s ease, opacity 0.45s ease;
 }
 
 .circle.zoom {
@@ -151,84 +178,118 @@ button:active {
 
 <body>
 
-<!-- 💌 ENVELOPE PAGE -->
+<!-- 💌 ENVELOPE -->
 <div class="page active polka" id="page-envelope">
-  <h1>🎉 happy 16th birthday polly!!! 🎉</h1>
-
-  <img src="images/deer.png" class="decor big" style="top:90px; left:20px;">
-  <img src="images/lamb.png" class="decor big" style="top:140px; right:24px;">
-  <img src="images/ladybug.png" class="decor small" style="bottom:140px; left:50px;">
-
-  <div class="card">
-    <div id="envelope" class="envelope" onclick="openEnvelope()">✉️</div>
-    <p id="message" style="display:none; margin-top:18px;">
-      (your message goes here 💕)
-    </p>
+  <div class="header">
+    <h1>🎉 happy 16th birthday polly!!! 🎉</h1>
   </div>
 
-  <button id="nextBtn" style="display:none;" onclick="goToPage('hub')">
-    next ✨
-  </button>
+  <!-- FLOATING DECOR (LOTS) -->
+  <img src="images/deer.png" class="decor big" style="top:70px; left:12px;">
+  <img src="images/deer.png" class="decor medium slow" style="top:260px; right:18px;">
+  <img src="images/lamb.png" class="decor big" style="top:140px; right:18px;">
+  <img src="images/lamb.png" class="decor medium fast" style="bottom:220px; left:14px;">
+  <img src="images/ladybug.png" class="decor small" style="top:320px; left:40px;">
+  <img src="images/ladybug.png" class="decor small slow" style="bottom:120px; right:50px;">
+
+  <div class="main">
+    <div class="card">
+      <div id="envelope" class="envelope" onclick="openEnvelope()">✉️</div>
+      <p id="message" style="display:none; margin-top:16px;">
+        your message goes here 💕
+      </p>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <button id="nextBtn" style="display:none;" onclick="goToPage('hub')">
+      next ✨
+    </button>
+  </div>
 </div>
 
 <!-- 🌸 HUB -->
 <div class="page" id="page-hub">
-  <div class="back-btn" onclick="goToPage('envelope')">← back</div>
+  <div class="back-btn" onclick="goToPage('envelope')">←</div>
 
-  <h2>for your special day 💗</h2>
+  <div class="header">
+    <h2>for your special day 💗</h2>
+  </div>
 
-  <img src="images/miffy.png" class="decor big" style="top:70px; left:20px;">
-  <img src="images/pusheen.png" class="decor big" style="top:70px; right:20px;">
+  <img src="images/miffy.png" class="decor big" style="top:90px; left:14px;">
+  <img src="images/miffy.png" class="decor medium slow" style="bottom:160px; right:22px;">
+  <img src="images/pusheen.png" class="decor big" style="top:90px; right:16px;">
+  <img src="images/pusheen.png" class="decor medium fast" style="bottom:260px; left:18px;">
 
-  <div class="circle-container">
-    <div class="circle" onclick="circleGo('photos', this)">📸</div>
-    <div class="circle" onclick="circleGo('music', this)">🎶</div>
-    <div class="circle" onclick="circleGo('gift', this)">🎁</div>
+  <div class="main">
+    <div class="circle-container">
+      <div class="circle" onclick="circleGo('photos', this)">📸</div>
+      <div class="circle" onclick="circleGo('music', this)">🎶</div>
+      <div class="circle" onclick="circleGo('gift', this)">🎁</div>
+    </div>
   </div>
 </div>
 
 <!-- 🎁 GIFT -->
 <div class="page" id="page-gift">
-  <div class="back-btn" onclick="goToPage('hub')">← back</div>
+  <div class="back-btn" onclick="goToPage('hub')">←</div>
 
-  <h2>tap the gift 🎁</h2>
+  <div class="header">
+    <h2>tap the gift 🎁</h2>
+  </div>
 
-  <img src="images/unicorn.png" class="decor big" style="top:80px; right:24px;">
-  <img src="images/numnoms.png" class="decor small" style="bottom:140px; left:40px;">
+  <img src="images/unicorn.png" class="decor big" style="top:100px; right:14px;">
+  <img src="images/unicorn.png" class="decor medium slow" style="bottom:200px; left:20px;">
+  <img src="images/numnoms.png" class="decor small" style="top:260px; left:30px;">
+  <img src="images/numnoms.png" class="decor small fast" style="bottom:140px; right:40px;">
 
-  <div class="card" onclick="revealGift()">
-    <div id="gift" class="gift">🎁</div>
-    <p id="code" style="display:none;">ROBLOX-CODE-HERE 💖</p>
+  <div class="main">
+    <div class="card" onclick="revealGift()">
+      <div id="gift" class="gift">🎁</div>
+      <p id="code" style="display:none;">ROBLOX-CODE-HERE 💖</p>
+    </div>
   </div>
 </div>
 
 <!-- 🎶 MUSIC -->
 <div class="page" id="page-music">
-  <div class="back-btn" onclick="goToPage('hub')">← back</div>
+  <div class="back-btn" onclick="goToPage('hub')">←</div>
 
-  <h2>polly’s songs 🎧</h2>
+  <div class="header">
+    <h2>polly’s songs 🎧</h2>
+  </div>
 
-  <img src="images/monchhichi.png" class="decor big" style="top:90px; left:24px;">
-  <img src="images/lamb.png" class="decor small" style="bottom:120px; right:40px;">
+  <img src="images/monchhichi.png" class="decor big" style="top:90px; left:18px;">
+  <img src="images/monchhichi.png" class="decor medium slow" style="bottom:180px; right:20px;">
+  <img src="images/lamb.png" class="decor small" style="top:300px; right:36px;">
+  <img src="images/lamb.png" class="decor small fast" style="bottom:120px; left:40px;">
 
-  <div class="card">
-    <p>💗 Song 1</p>
-    <p>💗 Song 2</p>
-    <p>💗 Song 3</p>
+  <div class="main">
+    <div class="card">
+      <p>💗 Song 1</p>
+      <p>💗 Song 2</p>
+      <p>💗 Song 3</p>
+    </div>
   </div>
 </div>
 
 <!-- 📸 PHOTOS -->
 <div class="page" id="page-photos">
-  <div class="back-btn" onclick="goToPage('hub')">← back</div>
+  <div class="back-btn" onclick="goToPage('hub')">←</div>
 
-  <h2>polly’s favs ✨</h2>
+  <div class="header">
+    <h2>polly’s favs ✨</h2>
+  </div>
 
-  <img src="images/sylvanian.png" class="decor big" style="top:80px; left:20px;">
-  <img src="images/sylvanian.png" class="decor small" style="bottom:120px; right:40px;">
+  <img src="images/sylvanian.png" class="decor big" style="top:90px; left:16px;">
+  <img src="images/sylvanian.png" class="decor medium slow" style="bottom:160px; right:18px;">
+  <img src="images/sylvanian.png" class="decor small" style="top:300px; right:44px;">
+  <img src="images/sylvanian.png" class="decor small fast" style="bottom:120px; left:34px;">
 
-  <div class="card">
-    <p>add photos here 💕</p>
+  <div class="main">
+    <div class="card">
+      <p>add photos here 💕</p>
+    </div>
   </div>
 </div>
 
@@ -241,17 +302,15 @@ function goToPage(name) {
 function openEnvelope() {
   const env = document.getElementById("envelope");
   env.classList.add("open");
-
   setTimeout(() => {
     document.getElementById("message").style.display = "block";
     document.getElementById("nextBtn").style.display = "block";
-  }, 500);
+  }, 450);
 }
 
 function revealGift() {
   const gift = document.getElementById("gift");
   gift.classList.add("open");
-
   setTimeout(() => {
     document.getElementById("code").style.display = "block";
   }, 400);
@@ -262,7 +321,7 @@ function circleGo(page, el) {
   setTimeout(() => {
     el.classList.remove("zoom");
     goToPage(page);
-  }, 500);
+  }, 450);
 }
 </script>
 
