@@ -22,6 +22,11 @@ html, body {
   justify-content: center;
 }
 
+#nextBtn {
+  margin-top: 16px; /* space from envelope/message */
+  position: relative; 
+  z-index: 10;
+}
 /* PHONE SCREEN */
 .page {
   position: fixed; /* keep page in place */
@@ -146,19 +151,18 @@ button:active { transform: scale(0.96); }
 </head>
 <body>
 
-<!-- 💌 ENVELOPE -->
 <div class="page active polka" id="page-envelope">
   <div class="header"><h1>🎉 happy 16th birthday polly!!! 🎉</h1></div>
   <div class="main">
     <div class="card">
       <div id="envelope" class="envelope" onclick="toggleEnvelope()">✉️</div>
       <p id="message" style="display:none; margin-top:16px;">your message goes here 💕</p>
+      <!-- Move the button inside the card -->
+      <button id="nextBtn" style="display:none;" onclick="goToPage('hub')">next ✨</button>
     </div>
   </div>
-  <div class="bottom">
-    <button id="nextBtn" style="display:none;" onclick="goToPage('hub')">next ✨</button>
-  </div>
 </div>
+
 
 <!-- 🌸 HUB -->
 <div class="page polka" id="page-hub">
