@@ -10,8 +10,12 @@
 <style>
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* prevent scrolling */
   font-family: 'Quicksand', sans-serif;
   background: linear-gradient(180deg, #ffd6ea, #f3b9d5);
   display: flex;
@@ -20,9 +24,12 @@ body {
 
 /* PHONE SCREEN */
 .page {
+  position: fixed; /* keep page in place */
+  top: 0;
+  left: 0;
   width: 100%;
   max-width: 390px;
-  min-height: 100dvh;
+  height: 100vh; /* full viewport height */
   padding: 16px;
   display: none;
   flex-direction: column;
@@ -233,19 +240,17 @@ function circleGo(page,el){
   setTimeout(()=>{ el.classList.remove("zoom"); goToPage(page); },450);
 }
 
-// Function to place fixed number of decor per page evenly
+// Evenly spread decor function
 function placeDecorEven(pageId, items){
   const page=document.getElementById(pageId);
   items.forEach(item=>{
-    const count=4; // 4 copies per item
+    const count=4;
     for(let i=0;i<count;i++){
       const el=document.createElement('img');
       el.src=item.src;
       el.className=`decor ${item.size} ${Math.random()>0.5?'fast':'slow'}`;
-      
-      // Divide page into vertical slices for even spread
-      const top = 10 + (i * (80 / count)) + Math.random() * (80 / count * 0.5);
-      const left = 10 + Math.random() * 80; // horizontal random but within 10-90%
+      const top = 10 + (i * (80 / count)) + Math.random() * (80 / count * 0.4);
+      const left = 10 + Math.random() * 80;
       el.style.top = top + 'vh';
       el.style.left = left + 'vw';
       page.appendChild(el);
@@ -253,7 +258,7 @@ function placeDecorEven(pageId, items){
   });
 }
 
-// Use this new function for all pages
+// Place decor for all pages
 placeDecorEven('page-envelope', [
   {src:'images/deer.png', size:'big'},
   {src:'images/lamb.png', size:'medium'},
@@ -286,7 +291,7 @@ placeDecorEven('page-photos', [
   {src:'images/sylvanian.png', size:'medium'},
   {src:'images/sylvanian.png', size:'small'},
   {src:'images/sylvanian.png', size:'medium'}
-  ]);
+]);
 </script>
 </body>
 </html>
