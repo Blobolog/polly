@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Happy 16th Polly 💕</title>
+<title>happy 16th pols</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -15,21 +15,21 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* prevent scrolling */
+  overflow: hidden; 
   font-family: 'Quicksand', sans-serif;
   background: linear-gradient(180deg, #ffd6ea, #f3b9d5);
   display: flex;
   justify-content: center;
 }
 
-/* PHONE SCREEN */
+
 .page {
-  position: fixed; /* keep page in place */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
   max-width: 390px;
-  height: 100vh; /* full viewport height */
+  height: 100vh; 
   padding: 16px;
   display: none;
   flex-direction: column;
@@ -44,10 +44,9 @@ html, body {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* POLKA DOT BACKGROUND */
+
 .polka { background-image: radial-gradient(#f7a8c7 1.5px, transparent 1.5px); background-size: 26px 26px; }
 
-/* HEADERS */
 h1,h2 { color:#5a3d4e; margin:8px 0; }
 
 /* LAYOUT SECTIONS */
@@ -55,7 +54,7 @@ h1,h2 { color:#5a3d4e; margin:8px 0; }
 .main { flex:1; display:flex; align-items:center; justify-content:center; }
 .bottom { padding-bottom: env(safe-area-inset-bottom); }
 
-/* CARD */
+
 .card {
   width: 100%;
   background: rgba(255,250,252,0.97);
@@ -71,7 +70,20 @@ h1,h2 { color:#5a3d4e; margin:8px 0; }
   text-align: center;
 }
 
-/* BUTTONS */
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 8px; 
+  margin-top: 12px;
+}
+
+.photos-grid img {
+  width: 100%;           
+  aspect-ratio: 1 / 1;   
+  border-radius: 12px;
+  object-fit: cover;     
+}
+
 button {
   margin-top: 14px;
   padding: 15px;
@@ -96,7 +108,6 @@ button:active { transform: scale(0.96); }
   z-index:10;
 }
 
-/* FLOATING DECOR */
 .decor {
   position: absolute;
   pointer-events: none;
@@ -116,7 +127,6 @@ button:active { transform: scale(0.96); }
   100% { transform: translateY(0); }
 }
 
-/* INTERACTIVES */
 .envelope {
   font-size:58px; cursor:pointer;
   transition: transform 0.6s ease;
@@ -133,7 +143,6 @@ button:active { transform: scale(0.96); }
 }
 .gift.open { transform: scale(0) rotate(180deg); }
 
-/* HUB */
 .circle-container { display:flex; justify-content:space-between; gap:10px; }
 .circle {
   width:96px; height:96px;
@@ -147,7 +156,6 @@ button:active { transform: scale(0.96); }
 }
 .circle.zoom { transform: scale(12); opacity:0; }
 
-/* NEXT BUTTON UNDER ENVELOPE */
 #nextBtn {
   margin-top:16px;
   position: relative;
@@ -157,22 +165,22 @@ button:active { transform: scale(0.96); }
 </head>
 <body>
 
-<!-- 💌 ENVELOPE -->
+<!-- envelope -->
 <div class="page active polka" id="page-envelope">
   <div class="header"><h1>🎉 happy 16th birthday polly!!! 🎉</h1></div>
   <div class="main">
     <div class="card">
       <div id="envelope" class="envelope" onclick="toggleEnvelope()">✉️</div>
-      <p id="message" style="display:none; margin-top:16px;">your message goes here 💕</p>
+      <p id="message" style="display:none; margin-top:16px;">HAPPY BIRTHDAY POLLY, 16 years old! (couple of months ago i thoguht it was 17 years old). i hope you have the best (golden) birthday, i hope you get spoiled and get everything you deserve(the whole universe). thank you for being the best friend i could ever ask for, keep being you :D, your so strong and pure and im so proud of you for staying that way no matter what comes your way. have the best 16th and ill see you in under a week!!!!</p>
       <button id="nextBtn" style="display:none;" onclick="goToPage('hub')">next ✨</button>
     </div>
   </div>
 </div>
 
-<!-- 🌸 HUB -->
+<!-- hub-->
 <div class="page polka" id="page-hub">
   <div class="back-btn" onclick="goToPage('envelope')">←</div>
-  <div class="header"><h2>for your special day 💗</h2></div>
+  <div class="header"><h2>for your special day</h2></div>
   <div class="main">
     <div class="circle-container">
       <div class="circle" onclick="circleGo('photos', this)">📸</div>
@@ -182,25 +190,26 @@ button:active { transform: scale(0.96); }
   </div>
 </div>
 
-<!-- 🎁 GIFT -->
+<!-- gift -->
 <div class="page polka" id="page-gift">
   <div class="back-btn" onclick="goToPage('hub')">←</div>
-  <div class="header"><h2>tap the gift 🎁</h2></div>
+  <div class="header"><h2>open the gift (tap it)</h2></div>
   <div class="main">
     <div class="card" onclick="revealGift()">
       <div id="gift" class="gift">🎁</div>
-      <p id="code" style="display:none; font-size:1.2rem; font-weight:600;">ROBLOX-CODE-HERE 💖</p>
+      <p id="code" style="display:none; font-size:1.2rem; font-weight:600;">ROBUX CODE!!!!</p>
+      <p>RIPXEDH8H3CAHD9VR3</p>
     </div>
   </div>
 </div>
 
-<!-- 🎶 MUSIC -->
+<!-- music -->
 <div class="page polka" id="page-music">
   <div class="back-btn" onclick="goToPage('hub')">←</div>
   <div class="header"><h2>polly’s songs 🎧</h2></div>
   <div class="main">
     <div class="card">
-      <p>polly’s playlist 💗</p>
+      <p>polly’s bday playlist!</p>
       <iframe 
         src="https://open.spotify.com/embed/playlist/5irXbSpAEBGE4J1bHNYmxp?si=98b175543688483e" 
         width="300" 
@@ -213,13 +222,24 @@ button:active { transform: scale(0.96); }
   </div>
 </div>
 
-<!-- 📸 PHOTOS -->
+<!-- photos -->
 <div class="page polka" id="page-photos">
   <div class="back-btn" onclick="goToPage('hub')">←</div>
   <div class="header"><h2>polly’s favs ✨</h2></div>
   <div class="main">
     <div class="card">
-      <p>add photos here 💕</p>
+      <p>polly’s mood board</p>
+      <div class="photos-grid">
+        <img src="images/photo1.jpg" alt="Photo 1">
+        <img src="images/photo2.jpg" alt="Photo 2">
+        <img src="images/photo3.jpg" alt="Photo 3">
+        <img src="images/photo4.jpg" alt="Photo 4">
+        <img src="images/photo5.jpg" alt="Photo 5">
+        <img src="images/photo6.jpg" alt="Photo 6">
+        <img src="images/photo7.jpg" alt="Photo 7">
+        <img src="images/photo8.jpg" alt="Photo 8">
+        <img src="images/photo9.jpg" alt="Photo 9">
+      </div>
     </div>
   </div>
 </div>
@@ -255,7 +275,6 @@ function circleGo(page,el){
   setTimeout(()=>{ el.classList.remove("zoom"); goToPage(page); },450);
 }
 
-// Evenly spread decor function
 function placeDecorEven(pageId, items){
   const page=document.getElementById(pageId);
   items.forEach(item=>{
@@ -273,7 +292,7 @@ function placeDecorEven(pageId, items){
   });
 }
 
-// Place decor for all pages
+
 placeDecorEven('page-envelope', [
   {src:'images/deer.png', size:'big'},
   {src:'images/lamb.png', size:'medium'},
