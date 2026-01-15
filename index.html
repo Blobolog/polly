@@ -233,55 +233,60 @@ function circleGo(page,el){
   setTimeout(()=>{ el.classList.remove("zoom"); goToPage(page); },450);
 }
 
-// Function to place fixed number of decor per page
-function placeDecorFixed(pageId, items){
+// Function to place fixed number of decor per page evenly
+function placeDecorEven(pageId, items){
   const page=document.getElementById(pageId);
   items.forEach(item=>{
-    for(let i=0;i<4;i++){ // 4 copies each
+    const count=4; // 4 copies per item
+    for(let i=0;i<count;i++){
       const el=document.createElement('img');
       el.src=item.src;
       el.className=`decor ${item.size} ${Math.random()>0.5?'fast':'slow'}`;
-      el.style.top=(10 + Math.random()*70)+'vh';
-      el.style.left=(10 + Math.random()*70)+'vw';
+      
+      // Divide page into vertical slices for even spread
+      const top = 10 + (i * (80 / count)) + Math.random() * (80 / count * 0.5);
+      const left = 10 + Math.random() * 80; // horizontal random but within 10-90%
+      el.style.top = top + 'vh';
+      el.style.left = left + 'vw';
       page.appendChild(el);
     }
   });
 }
 
-// Place decor for all pages
-placeDecorFixed('page-envelope', [
+// Use this new function for all pages
+placeDecorEven('page-envelope', [
   {src:'images/deer.png', size:'big'},
   {src:'images/lamb.png', size:'medium'},
   {src:'images/ladybug.png', size:'small'}
 ]);
 
-placeDecorFixed('page-hub', [
+placeDecorEven('page-hub', [
   {src:'images/miffy.png', size:'big'},
   {src:'images/miffy.png', size:'medium'},
   {src:'images/pusheen.png', size:'big'},
   {src:'images/pusheen.png', size:'medium'}
 ]);
 
-placeDecorFixed('page-gift', [
+placeDecorEven('page-gift', [
   {src:'images/unicorn.png', size:'big'},
   {src:'images/unicorn.png', size:'medium'},
   {src:'images/numnoms.png', size:'small'},
   {src:'images/numnoms.png', size:'medium'}
 ]);
 
-placeDecorFixed('page-music', [
+placeDecorEven('page-music', [
   {src:'images/monchhichi.png', size:'big'},
   {src:'images/monchhichi.png', size:'medium'},
   {src:'images/lamb.png', size:'small'},
   {src:'images/lamb.png', size:'medium'}
 ]);
 
-placeDecorFixed('page-photos', [
+placeDecorEven('page-photos', [
   {src:'images/sylvanian.png', size:'big'},
   {src:'images/sylvanian.png', size:'medium'},
   {src:'images/sylvanian.png', size:'small'},
   {src:'images/sylvanian.png', size:'medium'}
-]);
+  ]);
 </script>
 </body>
 </html>
