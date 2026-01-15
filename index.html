@@ -37,17 +37,15 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-.polka {
-  background-image: radial-gradient(#f7a8c7 1.5px, transparent 1.5px);
-  background-size: 26px 26px;
-}
+/* POLKA DOT BACKGROUND */
+.polka { background-image: radial-gradient(#f7a8c7 1.5px, transparent 1.5px); background-size: 26px 26px; }
 
 /* HEADERS */
-h1, h2 { color: #5a3d4e; margin: 8px 0; }
+h1,h2 { color:#5a3d4e; margin:8px 0; }
 
 /* LAYOUT SECTIONS */
-.header { text-align: center; padding-top: 6px; }
-.main { flex: 1; display: flex; align-items: center; justify-content: center; }
+.header { text-align:center; padding-top:6px; }
+.main { flex:1; display:flex; align-items:center; justify-content:center; }
 .bottom { padding-bottom: env(safe-area-inset-bottom); }
 
 /* CARD */
@@ -78,19 +76,17 @@ button {
   font-weight: 600;
   font-size: 1rem;
 }
-
 button:active { transform: scale(0.96); }
 
 .back-btn {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top:14px; left:14px;
   background: rgba(255,255,255,0.95);
   border-radius: 999px;
-  padding: 8px 14px;
-  font-weight: 600;
+  padding:8px 14px;
+  font-weight:600;
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-  z-index: 2;
+  z-index:2;
 }
 
 /* FLOATING DECOR */
@@ -100,13 +96,11 @@ button:active { transform: scale(0.96); }
   opacity: 0.9;
   animation: floaty 6s ease-in-out infinite;
 }
-
-.decor.small { width: 28px; }
-.decor.medium { width: 44px; }
-.decor.big { width: 64px; }
-
-.decor.slow { animation-duration: 9s; }
-.decor.fast { animation-duration: 4.5s; }
+.decor.small { width:28px; }
+.decor.medium { width:44px; }
+.decor.big { width:64px; }
+.decor.slow { animation-duration:9s; }
+.decor.fast { animation-duration:4.5s; }
 
 @keyframes floaty {
   0% { transform: translateY(0); }
@@ -116,71 +110,53 @@ button:active { transform: scale(0.96); }
 
 /* INTERACTIVES */
 .envelope {
-  font-size: 58px;
-  cursor: pointer;
+  font-size:58px; cursor:pointer;
   transition: transform 0.6s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex; justify-content:center; align-items:center;
 }
 .envelope.open { transform: rotateX(180deg) scale(1.1); }
 
 .gift {
-  font-size: 64px;
+  font-size:64px;
   transition: transform 0.5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex; justify-content:center; align-items:center;
 }
 .gift.open { transform: scale(0) rotate(180deg); }
 
 /* HUB */
-.circle-container { display: flex; justify-content: space-between; gap: 10px; }
-
+.circle-container { display:flex; justify-content:space-between; gap:10px; }
 .circle {
-  width: 96px;
-  height: 96px;
-  background: #fffafc;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  width:96px; height:96px;
+  background:#fffafc;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:2rem;
+  box-shadow:0 10px 20px rgba(0,0,0,0.12);
   transition: transform 0.45s ease, opacity 0.45s ease;
 }
-
-.circle.zoom { transform: scale(12); opacity: 0; }
+.circle.zoom { transform: scale(12); opacity:0; }
 </style>
 </head>
-
 <body>
 
 <!-- 💌 ENVELOPE -->
 <div class="page active polka" id="page-envelope">
-  <div class="header">
-    <h1>🎉 happy 16th birthday polly!!! 🎉</h1>
-  </div>
-
+  <div class="header"><h1>🎉 happy 16th birthday polly!!! 🎉</h1></div>
   <div class="main">
     <div class="card">
       <div id="envelope" class="envelope" onclick="toggleEnvelope()">✉️</div>
-      <p id="message" style="display:none; margin-top:16px;">
-        your message goes here 💕
-      </p>
+      <p id="message" style="display:none; margin-top:16px;">your message goes here 💕</p>
     </div>
   </div>
-
   <div class="bottom">
     <button id="nextBtn" style="display:none;" onclick="goToPage('hub')">next ✨</button>
   </div>
 </div>
 
 <!-- 🌸 HUB -->
-<div class="page" id="page-hub">
+<div class="page polka" id="page-hub">
   <div class="back-btn" onclick="goToPage('envelope')">←</div>
   <div class="header"><h2>for your special day 💗</h2></div>
-
   <div class="main">
     <div class="circle-container">
       <div class="circle" onclick="circleGo('photos', this)">📸</div>
@@ -191,10 +167,9 @@ button:active { transform: scale(0.96); }
 </div>
 
 <!-- 🎁 GIFT -->
-<div class="page" id="page-gift">
+<div class="page polka" id="page-gift">
   <div class="back-btn" onclick="goToPage('hub')">←</div>
   <div class="header"><h2>tap the gift 🎁</h2></div>
-
   <div class="main">
     <div class="card" onclick="revealGift()">
       <div id="gift" class="gift">🎁</div>
@@ -204,7 +179,7 @@ button:active { transform: scale(0.96); }
 </div>
 
 <!-- 🎶 MUSIC -->
-<div class="page" id="page-music">
+<div class="page polka" id="page-music">
   <div class="back-btn" onclick="goToPage('hub')">←</div>
   <div class="header"><h2>polly’s songs 🎧</h2></div>
   <div class="main">
@@ -217,7 +192,7 @@ button:active { transform: scale(0.96); }
 </div>
 
 <!-- 📸 PHOTOS -->
-<div class="page" id="page-photos">
+<div class="page polka" id="page-photos">
   <div class="back-btn" onclick="goToPage('hub')">←</div>
   <div class="header"><h2>polly’s favs ✨</h2></div>
   <div class="main">
@@ -228,80 +203,85 @@ button:active { transform: scale(0.96); }
 </div>
 
 <script>
-function goToPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
+function goToPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
 }
 
-// Envelope toggle
-function toggleEnvelope() {
-  const env = document.getElementById("envelope");
-  const msg = document.getElementById("message");
-  const btn = document.getElementById("nextBtn");
-  if(env.classList.contains("open")) {
+function toggleEnvelope(){
+  const env=document.getElementById("envelope");
+  const msg=document.getElementById("message");
+  const btn=document.getElementById("nextBtn");
+  if(env.classList.contains("open")){
     env.classList.remove("open");
-    msg.style.display = "none";
-    btn.style.display = "none";
+    msg.style.display="none";
+    btn.style.display="none";
   } else {
     env.classList.add("open");
-    setTimeout(() => { msg.style.display = "block"; btn.style.display = "block"; }, 450);
+    setTimeout(()=>{ msg.style.display="block"; btn.style.display="block"; },450);
   }
 }
 
-// Gift reveal
-function revealGift() {
-  const gift = document.getElementById("gift");
+function revealGift(){
+  const gift=document.getElementById("gift");
   gift.classList.add("open");
-  setTimeout(() => { document.getElementById("code").style.display = "block"; }, 400);
+  setTimeout(()=>{ document.getElementById("code").style.display="block"; },400);
 }
 
-// Circle zoom
-function circleGo(page, el) {
+function circleGo(page,el){
   el.classList.add("zoom");
-  setTimeout(() => { el.classList.remove("zoom"); goToPage(page); }, 450);
+  setTimeout(()=>{ el.classList.remove("zoom"); goToPage(page); },450);
 }
 
-// Generate random decor positions
-const decorImages = [
-  {src:'images/deer.png', size:'big'},
-  {src:'images/deer.png', size:'medium'},
-  {src:'images/deer.png', size:'small'},
-  {src:'images/lamb.png', size:'big'},
-  {src:'images/lamb.png', size:'medium'},
-  {src:'images/lamb.png', size:'small'},
-  {src:'images/ladybug.png', size:'small'},
-  {src:'images/ladybug.png', size:'medium'},
-  {src:'images/miffy.png', size:'big'},
-  {src:'images/miffy.png', size:'medium'},
-  {src:'images/pusheen.png', size:'big'},
-  {src:'images/pusheen.png', size:'medium'},
-  {src:'images/unicorn.png', size:'big'},
-  {src:'images/unicorn.png', size:'medium'},
-  {src:'images/numnoms.png', size:'small'},
-  {src:'images/numnoms.png', size:'medium'},
-  {src:'images/monchhichi.png', size:'big'},
-  {src:'images/monchhichi.png', size:'medium'},
-  {src:'images/sylvanian.png', size:'big'},
-  {src:'images/sylvanian.png', size:'medium'}
-];
-
-function randomDecor() {
-  document.querySelectorAll('.page').forEach(page => {
-    decorImages.forEach(img => {
-      for(let i=0;i<4;i++){
-        const el = document.createElement('img');
-        el.src = img.src;
-        el.className = `decor ${img.size} ${Math.random()>0.5?'fast':'slow'}`;
-        el.style.top = Math.floor(Math.random()*80 + 10) + 'vh';
-        el.style.left = Math.floor(Math.random()*80 + 10) + 'vw';
-        page.appendChild(el);
-      }
-    });
+// Function to place fixed number of decor per page
+function placeDecorFixed(pageId, items){
+  const page=document.getElementById(pageId);
+  items.forEach(item=>{
+    for(let i=0;i<4;i++){ // 4 copies each
+      const el=document.createElement('img');
+      el.src=item.src;
+      el.className=`decor ${item.size} ${Math.random()>0.5?'fast':'slow'}`;
+      el.style.top=(10 + Math.random()*70)+'vh';
+      el.style.left=(10 + Math.random()*70)+'vw';
+      page.appendChild(el);
+    }
   });
 }
 
-randomDecor();
-</script>
+// Place decor for all pages
+placeDecorFixed('page-envelope', [
+  {src:'images/deer.png', size:'big'},
+  {src:'images/lamb.png', size:'medium'},
+  {src:'images/ladybug.png', size:'small'}
+]);
 
+placeDecorFixed('page-hub', [
+  {src:'images/miffy.png', size:'big'},
+  {src:'images/miffy.png', size:'medium'},
+  {src:'images/pusheen.png', size:'big'},
+  {src:'images/pusheen.png', size:'medium'}
+]);
+
+placeDecorFixed('page-gift', [
+  {src:'images/unicorn.png', size:'big'},
+  {src:'images/unicorn.png', size:'medium'},
+  {src:'images/numnoms.png', size:'small'},
+  {src:'images/numnoms.png', size:'medium'}
+]);
+
+placeDecorFixed('page-music', [
+  {src:'images/monchhichi.png', size:'big'},
+  {src:'images/monchhichi.png', size:'medium'},
+  {src:'images/lamb.png', size:'small'},
+  {src:'images/lamb.png', size:'medium'}
+]);
+
+placeDecorFixed('page-photos', [
+  {src:'images/sylvanian.png', size:'big'},
+  {src:'images/sylvanian.png', size:'medium'},
+  {src:'images/sylvanian.png', size:'small'},
+  {src:'images/sylvanian.png', size:'medium'}
+]);
+</script>
 </body>
 </html>
